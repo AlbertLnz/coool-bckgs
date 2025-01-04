@@ -1,6 +1,6 @@
 import { useState } from 'preact/hooks'
-import SvelteWrapper from './SvelteWrapper'
-import bckgStylesMap from '../lib/bckgStylesMap'
+import SvelteWrapper from '@/components/SvelteWrapper'
+import bckgStylesMap from '@/lib/bckgStylesMap'
 
 const BtnChangeBckg = () => {
   const [bckgStyle, setBckgStyle] = useState<null | string>(null)

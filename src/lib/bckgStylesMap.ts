@@ -1,5 +1,5 @@
-import Grid from '../bckgs/Grid.svelte'
-import SolidColor from '../bckgs/SolidColor.svelte'
+import Grid from '@/bckgs/Grid.svelte'
+import SolidColor from '@/bckgs/SolidColor.svelte'
 import type { SvelteComponent } from 'svelte'
 
 type BckgStyle = {

@@ -1,24 +1,24 @@
----
-const bckgColor = '#111111'
-const linesColor = '#454125'
-const linesDepth = 1
-const linesDepthTxt = `${linesDepth}px`
-const columns = 40
-const rows = Math.floor(columns / 2)
----
+<script>
+  const bckgColor = '#111111';
+  const linesColor = '#454125';
+  const linesDepth = 1;
+  const linesDepthTxt = `${linesDepth}px`;
+  const columns = 40;
+  const rows = Math.floor(columns / 2);
+</script>
 
 <div
-  class='grid-background'
-  style=`--bckgColor: ${bckgColor}; --linesColor: ${linesColor}; --linesDepth: ${linesDepthTxt}; --columns: ${columns}; --rows: ${rows};`
->
-</div>
+  class="grid-background"
+  style="--bckgColor: {bckgColor}; --linesColor: {linesColor}; --linesDepth: {linesDepthTxt}; --columns: {columns}; --rows: {rows};"
+></div>
 
 <style>
   .grid-background {
+    position: absolute;
+    top: 0;
     z-index: -50;
     width: 100%;
     height: 100vh;
-    position: relative;
     display: grid;
     grid-template-columns: repeat(var(--columns), 1fr);
     grid-template-rows: repeat(var(--rows), 1fr);

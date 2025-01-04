@@ -1,12 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import Title from '../sections/Title.astro'
-import Grid from '../bckgs/Grid.astro'
-import SolidColor from '../bckgs/SolidColor.astro'
+
+import BtnChangeBckg from '../components/BtnsChangeBckg'
 ---
 
 <Layout>
   <Title />
-  <!-- <Grid /> -->
-  <SolidColor />
+  <BtnChangeBckg client:visible />
 </Layout>

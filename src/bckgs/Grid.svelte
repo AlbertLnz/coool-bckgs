@@ -14,10 +14,11 @@
 
 <style>
   .grid-background {
-    position: absolute;
+    position: fixed;
     top: 0;
+    left: 0;
     z-index: -50;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     display: grid;
     grid-template-columns: repeat(var(--columns), 1fr);

@@ -11,12 +11,16 @@
   function createRain() {
     drops = Array.from({ length: nbDrop }, (_, i) => ({
       id: i + 1,
-      left: randRange(0, 1600),
+      left: randRange(0, window.innerWidth),
       top: randRange(-1000, 1400),
     }));
   }
 
   onMount(() => {
+    const body = document.body;
+    body.style.backgroundColor = '#111111';
+    body.style.margin = 0;
+
     createRain();
   });
 </script>
@@ -33,21 +37,20 @@
 </div>
 
 <style>
-
   .rain-bckg {
-    position: absolute;
+    position: fixed;
     top: 0;
+    left: 0;
     z-index: -50;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
-    overflow: hidden;
-    background-color: black;
+    pointer-events: none;
   }
 
   .rain {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     overflow: hidden;
   }
 
@@ -60,12 +63,9 @@
     width: 1px;
     height: 89px;
     position: absolute;
-    -webkit-animation: fall 1.4s linear infinite;
-    -moz-animation: fall 1.4s linear infinite;
     animation: fall 1.4s linear infinite;
   }
 
-  /* Animate the drops */
   @keyframes fall {
     to {
       margin-top: 900px;

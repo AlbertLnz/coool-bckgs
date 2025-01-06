@@ -32,6 +32,10 @@
   }
 
   onMount(() => {
+    const body = document.body;
+    body.style.backgroundColor = '#111111';
+    body.style.margin = 0;
+
     const snowflakeInterval = setInterval(createSnowflake, 50);
     const updateInterval = setInterval(updateSnowflakes, 16);
 
@@ -52,15 +56,14 @@
 </div>
 
 <style>
-
   .snowflakes-bckg {
-    position: absolute;
+    position: fixed;
     top: 0;
+    left: 0;
     z-index: -50;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
-    overflow: hidden;
-    background-color: black;
+    pointer-events: none;
   }
 
   .snowflake {

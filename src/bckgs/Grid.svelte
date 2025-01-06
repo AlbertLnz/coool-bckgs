@@ -1,10 +1,17 @@
 <script>
+  import { onMount } from "svelte";
+
   const bckgColor = '#111111';
   const linesColor = '#454125';
   const linesDepth = 1;
   const linesDepthTxt = `${linesDepth}px`;
   const columns = 40;
   const rows = Math.floor(columns / 2);
+
+  onMount(() => {
+    const body = document.body;
+    body.style.backgroundColor = 'transparent';
+  });
 </script>
 
 <div

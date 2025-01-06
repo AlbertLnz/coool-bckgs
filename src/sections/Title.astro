@@ -1,8 +1,22 @@
 ---
+import GithubIcon from '@/assets/GithubIcon.astro'
+
 const title = 'Cooool-bckgs'
 ---
 
-<header class='top-0 flex items-center justify-center w-full'>
-  <h1 class='text-8xl z-20 relative'>{title}</h1>
+<header class='relative flex flex-col items-center justify-center w-full'>
+  <h1 class='text-8xl z-20'>{title}</h1>
   <h1 class='text-8xl z-10 text-blue-400 blur-sm absolute top-0'>{title}</h1>
+  <a
+    href='https://github.com/AlbertLnz/coool-bckgs'
+    target='_blank'
+    class='absolute top-0 right-10'
+  >
+    <GithubIcon class='size-40 text-white/90 hover:text-white' />
+  </a>
+  <p class='mt-8 text-xl text-white/70 tracking-wide'>
+    Developed by <span class='hover:underline'>
+      <a href='https://albertlnz.tech' target='_blank'>Albert Lanza</a>
+    </span>
+  </p>
 </header>

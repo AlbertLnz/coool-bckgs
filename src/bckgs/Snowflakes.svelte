@@ -33,7 +33,7 @@
 
   onMount(() => {
     const body = document.body;
-    body.style.backgroundColor = '#111111';
+    body.style.backgroundColor = 'transparent';
     body.style.margin = 0;
 
     const snowflakeInterval = setInterval(createSnowflake, 50);

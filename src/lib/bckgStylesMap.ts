@@ -1,6 +1,7 @@
 import Grid from '@/bckgs/Grid.svelte'
 import SolidColor from '@/bckgs/SolidColor.svelte'
 import Snowflakes from '@/bckgs/Snowflakes.svelte'
+import Rain from '@/bckgs/Rain.svelte'
 import type { SvelteComponent } from 'svelte'
 
 type BckgStyle = {
@@ -20,6 +21,10 @@ const bckgStylesMap: BckgStyle[] = [
   {
     name: 'Snowflakes',
     component: Snowflakes,
+  },
+  {
+    name: 'Rain',
+    component: Rain,
   },
 ]
 

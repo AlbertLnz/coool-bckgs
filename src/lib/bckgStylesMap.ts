@@ -7,24 +7,29 @@ import type { SvelteComponent } from 'svelte'
 type BckgStyle = {
   name: string
   component: typeof SvelteComponent<any, any, any>
+  description: string
 }
 
 const bckgStylesMap: BckgStyle[] = [
   {
     name: 'SolidColor',
     component: SolidColor,
+    description: '',
   },
   {
     name: 'Grid',
     component: Grid,
+    description: '',
   },
   {
     name: 'Snowflakes',
     component: Snowflakes,
+    description: '',
   },
   {
     name: 'Rain',
     component: Rain,
+    description: '',
   },
 ]
 

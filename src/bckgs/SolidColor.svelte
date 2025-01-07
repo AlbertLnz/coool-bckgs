@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
-
-  const bckgColor = '#1E1F29';
+  
+  const bckgColor = '#111111';
 
   onMount(() => {
     const body = document.body;

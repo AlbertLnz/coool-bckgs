@@ -3,9 +3,11 @@ import Layout from '@/layouts/Layout.astro'
 import Title from '@/sections/Title.astro'
 
 import BtnChangeBckg from '@/components/BtnsChangeBckg'
+import SwitcherHideBckgsSvelte from '@/components/SwitcherHideBckgs.svelte'
 ---
 
 <Layout>
   <Title />
+  <SwitcherHideBckgsSvelte client:only='svelte' />
   <BtnChangeBckg client:only='preact' />
 </Layout>

@@ -11,6 +11,7 @@ import TubelightGlow from '@/bckgs/TubelightGlow.svelte'
 import TerrainPaths from '@/bckgs/TerrainPaths.svelte'
 import MagicStars from '@/bckgs/MagicStars.svelte'
 import MatrixEffect from '@/bckgs/MatrixEffect.svelte'
+import SunLight from '@/bckgs/SunLight.svelte'
 import type { SvelteComponent } from 'svelte'
 
 type BckgStyle = {
@@ -97,6 +98,12 @@ const bckgStylesMap: BckgStyle[] = [
     name: 'Matrix Effect',
     componentId: '.matrix-effect-background',
     component: MatrixEffect,
+    description: '',
+  },
+  {
+    name: 'Sun Light',
+    componentId: 'sun-light',
+    component: SunLight,
     description: '',
   },
 ]

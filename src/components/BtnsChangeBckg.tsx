@@ -4,18 +4,38 @@ import bckgStylesMap from '@/lib/bckgStylesMap'
 import SvelteIcon from '@/assets/SvelteIcon'
 import ReactIcon from '@/assets/ReactIcon'
 import VueIcon from '@/assets/VueIcon'
+import Toast from '@/components/Toast'
 
 const BtnChangeBckg = () => {
   const [bckgStyle, setBckgStyle] = useState<null | string>(null)
+  const [showToast, setShowToast] = useState({
+    show: false,
+    message: '',
+  })
 
-  const handleCopyComponent = (evt: any, style: string, component: string) => {
+  const handleCopyComponent = (
+    evt: any,
+    componentId: string,
+    message: string
+  ) => {
     evt.stopPropagation()
-    console.log(style, component)
+    const component = document.querySelector(componentId)
+    console.log(componentId, component)
+
+    setShowToast({ show: true, message })
+
+    setTimeout(() => {
+      setShowToast({ show: false, message })
+    }, 1500)
   }
 
   return (
     <>
-      <section className='grid grid-cols-3 gap-10 p-16'>
+      <section
+        id='bckg-section'
+        className='grid grid-cols-3 gap-10 p-16 transition-opacity duration-500'
+      >
+        <Toast showToast={showToast.show} message={showToast.message} />
         {bckgStylesMap.map((style) => {
           return (
             <article
@@ -23,37 +43,43 @@ const BtnChangeBckg = () => {
               onClick={() => setBckgStyle(style.name)}
             >
               <div class='absolute top-0 size-full bg-gradient-to-b from-[#242424] via-[#ffffff05] to-transparent'></div>
-              <h3 className='text-3xl tracking-wide line-clamp-1'>
+              <h3 className='text-3xl tracking-wide line-clamp-1 group-hover:scale-150 transition-all duration-300 ease-in-out'>
                 {style.name}
               </h3>
               <p className='absolute bottom-0 flex self-center justify-center mb-4 text-white/60 group-hover:hidden transition-all ease-in duration-500'>
                 {style.description}
               </p>
-              <div className='absolute w-full h-1/2 left-0 bottom-0 grid grid-cols-3 overflow-hidden'>
+              <div className='absolute w-full h-1/2 left-0 bottom-0 grid grid-cols-3 overflow-hidden transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500'>
                 <button
                   id='svelte'
-                  className='bg-[#FF3E00]/40 rounded-bl-xl flex items-center justify-center transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500'
+                  className='group/{svelte} bg-[#FF3E00]/40 rounded-bl-xl flex items-center justify-center'
                   onClick={(evt) =>
-                    handleCopyComponent(evt, style.name, 'svelte')
+                    handleCopyComponent(
+                      evt,
+                      style.componentId,
+                      'Copied Svelte component!'
+                    )
                   }
                 >
-                  <SvelteIcon className='size-10' />
+                  <SvelteIcon className='size-10 group-hover/{svelte}:scale-150 transition-all duration-150 ease-in' />
                 </button>
                 <button
                   id='react'
-                  className='bg-[#00D8FF]/40 flex items-center justify-center transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500'
+                  className='group/{react} bg-[#00D8FF]/40 flex items-center justify-center'
                   onClick={(evt) =>
-                    handleCopyComponent(evt, style.name, 'react')
+                    handleCopyComponent(evt, 'react', 'Copied React component!')
                   }
                 >
-                  <ReactIcon className='size-10' />
+                  <ReactIcon className='size-10 group-hover/{react}:scale-150 transition-all duration-150 ease-in' />
                 </button>
                 <button
                   id='vue'
-                  className='bg-[#41B883]/40 rounded-br-xl flex items-center justify-center transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500'
-                  onClick={(evt) => handleCopyComponent(evt, style.name, 'vue')}
+                  className='group/{vue} bg-[#41B883]/40 rounded-br-xl flex items-center justify-center'
+                  onClick={(evt) =>
+                    handleCopyComponent(evt, 'vue', 'Copied Vue component!')
+                  }
                 >
-                  <VueIcon className='size-10' />
+                  <VueIcon className='size-10 group-hover/{vue}:scale-150 transition-all duration-150 ease-in' />
                 </button>
               </div>
             </article>

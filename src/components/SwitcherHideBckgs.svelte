@@ -15,16 +15,16 @@
   }
 </script>
 
-<div class="flex flex-col items-center justify-center mx-auto my-6">
-  <button 
-  type="button"
-  aria-label="Toggle hide bckgs section"
-  onclick={handleSwitcher}
-  class={`cursor-pointer w-[60px] h-[28px] opacity-75 hover:opacity-100 flex items-center rounded-full px-1 ${
-  status ? 'bg-[#12CB66]' : 'bg-[#BEBEBE]'
-  }`}
->
-  <div class={`size-[20px] rounded-full transition-all bg-white ${status ? 'translate-x-8' : ''}`}></div>
-</button>
-<p class="mt-2 text-xl text-white/40 tracking-wide italic">Hide backgrounds</p>
+<div class="flex flex-col items-center justify-center py-6 bg-white/30 w-1/4 mx-auto rounded-xl">
+  <button
+    type="button"
+    aria-label="Toggle hide bckgs section"
+    onclick={handleSwitcher}
+    class={`cursor-pointer w-[60px] h-[28px] opacity-75 hover:opacity-100 flex items-center rounded-full px-1 ${
+    status ? 'bg-[#12CB66]' : 'bg-[#BEBEBE]'
+    }`}
+    >
+    <div class={`size-[20px] rounded-full transition-all bg-white ${status ? 'translate-x-8' : ''}`}></div>
+  </button>
+  <p class="mt-2 text-xl text-white/90 tracking-wide italic">Hide backgrounds</p>
 </div>

@@ -114,7 +114,9 @@ const BtnChangeBckg = () => {
         })}
       </section>
 
-      {bckgStyle && (
+      {bckgStyle == null ? (
+        <SvelteWrapper component={bckgStylesMap[5].svelteComponent} />
+      ) : (
         <SvelteWrapper
           component={
             bckgStylesMap.find((style) => style.name === bckgStyle)

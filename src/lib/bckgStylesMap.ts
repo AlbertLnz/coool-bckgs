@@ -2,7 +2,7 @@ import SolidColor from '@/bckgs/SolidColor.svelte'
 import Grid from '@/bckgs/Grid.svelte'
 import Snowflakes from '@/bckgs/Snowflakes.svelte'
 import Rain from '@/bckgs/Rain.svelte'
-import CirclesLines from '@/bckgs/CircleLines.svelte'
+import CircleLines from '@/bckgs/CircleLines.svelte'
 import InfiniteSquare3D from '@/bckgs/InfiniteSquare3D.svelte'
 import NeonLines from '@/bckgs/NeonLines.svelte'
 import SpeedMotion from '@/bckgs/SpeedMotion.svelte'
@@ -49,13 +49,13 @@ const bckgStylesMap: BckgStyle[] = [
   },
   {
     title: 'Circles Lines',
-    componentName: 'CirclesLines',
-    svelteComponent: CirclesLines,
+    componentName: 'CircleLines',
+    svelteComponent: CircleLines,
     description: '',
   },
   {
     title: 'Infinite Square 3d',
-    componentName: 'InfiniteSquare3d',
+    componentName: 'InfiniteSquare3D',
     svelteComponent: InfiniteSquare3D,
     description: '',
   },
@@ -72,8 +72,8 @@ const bckgStylesMap: BckgStyle[] = [
     description: '',
   },
   {
-    title: 'TopLightLines',
-    componentName: 'Top Light Lines',
+    title: 'Top Light Lines',
+    componentName: 'TopLightLines',
     svelteComponent: TopLightLines,
     description: '',
   },
@@ -84,8 +84,8 @@ const bckgStylesMap: BckgStyle[] = [
     description: '',
   },
   {
-    title: 'TerrainPaths',
-    componentName: 'Terrain Paths',
+    title: 'Terrain Paths',
+    componentName: 'TerrainPaths',
     svelteComponent: TerrainPaths,
     description: '',
   },

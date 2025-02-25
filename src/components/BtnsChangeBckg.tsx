@@ -13,14 +13,15 @@ const bckgRawFiles = import.meta.glob('/src/bckgs/*.{svelte,tsx,vue}', {
 
 const BtnChangeBckg = () => {
   const [bckgStyle, setBckgStyle] = useState<null | string>(null)
-  const [showToast, setShowToast] = useState({
+  const [showToast, setShowToast] = useState<any>({
     show: false,
-    message: '',
+    componentName: '',
+    technology: null,
   })
 
   async function getRawComponent(
     componentName: string,
-    technology: 'svelte' | 'tsx' | 'vue'
+    technology: null | 'svelte' | 'tsx' | 'vue'
   ) {
     const filePath = `/src/bckgs/${componentName}.${technology}`
     if (bckgRawFiles[filePath]) {
@@ -32,16 +33,15 @@ const BtnChangeBckg = () => {
   const handleCopyComponent = async (
     evt: any,
     componentName: string,
-    technology: 'svelte' | 'tsx' | 'vue',
-    message: string
+    technology: null | 'svelte' | 'tsx' | 'vue'
   ) => {
     evt.stopPropagation()
     const component = await getRawComponent(componentName, technology)
     console.log(componentName, component)
 
-    setShowToast({ show: true, message })
+    setShowToast({ show: true, componentName, technology })
     setTimeout(() => {
-      setShowToast({ show: false, message })
+      setShowToast({ show: false, componentName, technology })
     }, 1500)
   }
 
@@ -51,7 +51,11 @@ const BtnChangeBckg = () => {
         id='bckg-section'
         className='grid grid-cols-3 gap-10 p-16 transition-opacity duration-500'
       >
-        <Toast showToast={showToast.show} message={showToast.message} />
+        <Toast
+          showToast={showToast.show}
+          componentName={showToast.componentName}
+          technology={showToast.technology}
+        />
         {bckgStylesMap.map((style) => {
           return (
             <article
@@ -70,12 +74,7 @@ const BtnChangeBckg = () => {
                   id='svelte'
                   className='group/{svelte} bg-[#FF3E00]/40 rounded-bl-xl flex items-center justify-center'
                   onClick={(evt) =>
-                    handleCopyComponent(
-                      evt,
-                      style.componentName,
-                      'svelte',
-                      'Copied Svelte component!'
-                    )
+                    handleCopyComponent(evt, style.componentName, 'svelte')
                   }
                 >
                   <SvelteIcon className='size-10 group-hover/{svelte}:scale-150 transition-all duration-150 ease-in' />
@@ -84,12 +83,7 @@ const BtnChangeBckg = () => {
                   id='react'
                   className='group/{react} bg-[#00D8FF]/40 flex items-center justify-center'
                   onClick={(evt) =>
-                    handleCopyComponent(
-                      evt,
-                      style.componentName,
-                      'tsx',
-                      'Copied React component!'
-                    )
+                    handleCopyComponent(evt, style.componentName, 'tsx')
                   }
                 >
                   <ReactIcon className='size-10 group-hover/{react}:scale-150 transition-all duration-150 ease-in' />
@@ -98,12 +92,7 @@ const BtnChangeBckg = () => {
                   id='vue'
                   className='group/{vue} bg-[#41B883]/40 rounded-br-xl flex items-center justify-center'
                   onClick={(evt) =>
-                    handleCopyComponent(
-                      evt,
-                      style.componentName,
-                      'vue',
-                      'Copied Vue component!'
-                    )
+                    handleCopyComponent(evt, style.componentName, 'vue')
                   }
                 >
                   <VueIcon className='size-10 group-hover/{vue}:scale-150 transition-all duration-150 ease-in' />

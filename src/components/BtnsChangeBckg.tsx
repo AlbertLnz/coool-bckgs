@@ -36,8 +36,11 @@ const BtnChangeBckg = () => {
     technology: null | 'svelte' | 'tsx' | 'vue'
   ) => {
     evt.stopPropagation()
-    const component = await getRawComponent(componentName, technology)
-    console.log(componentName, component)
+    const component = (await getRawComponent(
+      componentName,
+      technology
+    )) as string
+    navigator.clipboard.writeText(component)
 
     setShowToast({ show: true, componentName, technology })
     setTimeout(() => {

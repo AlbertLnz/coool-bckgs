@@ -11,21 +11,6 @@ const bckgRawFiles = import.meta.glob('/src/bckgs/*.{svelte,tsx,vue}', {
   import: 'default',
 })
 
-async function getRawComponent(
-  name: string,
-  technology: 'svelte' | 'react' | 'vue'
-) {
-  const extension = technology === 'react' ? 'tsx' : technology
-  const filePath = `/src/bckgs/${name}.${extension}`
-  const loadFile = bckgRawFiles[filePath]
-
-  if (!loadFile) {
-    throw new Error(`Component "${name}.${extension}" not found in /src/bckgs/`)
-  }
-
-  return loadFile()
-}
-
 const BtnChangeBckg = () => {
   const [bckgStyle, setBckgStyle] = useState<null | string>(null)
   const [showToast, setShowToast] = useState({

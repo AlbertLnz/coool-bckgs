@@ -13,97 +13,88 @@ import MagicStars from '@/bckgs/MagicStars.svelte'
 import MatrixEffect from '@/bckgs/MatrixEffect.svelte'
 import SunLight from '@/bckgs/SunLight.svelte'
 import type { SvelteComponent } from 'svelte'
+import GlassEffect from '@/bckgs/GlassEffect.svelte'
 
 type BckgStyle = {
   name: string
-  componentId: string
-  component: typeof SvelteComponent<any, any, any>
+  svelteComponent: typeof SvelteComponent<any, any, any>
   description: string
 }
 
 const bckgStylesMap: BckgStyle[] = [
   {
     name: 'SolidColor',
-    componentId: '.solid-background',
-    component: SolidColor,
+    svelteComponent: SolidColor,
     description: '',
   },
   {
     name: 'Grid',
-    componentId: '.grid-background',
-    component: Grid,
+    svelteComponent: Grid,
     description: '',
   },
   {
     name: 'Snowflakes',
-    componentId: '.snowflakes-bckg',
-    component: Snowflakes,
+    svelteComponent: Snowflakes,
     description: '',
   },
   {
     name: 'Rain',
-    componentId: '.rain-bckg',
-    component: Rain,
+    svelteComponent: Rain,
     description: "It's raining man!",
   },
   {
     name: 'CirclesLines',
-    componentId: '.circle-lines-background',
-    component: CirclesLines,
+    svelteComponent: CirclesLines,
     description: '',
   },
   {
     name: 'InfiniteSquare3d',
-    componentId: '.infinite-square-3d',
-    component: InfiniteSquare3D,
+    svelteComponent: InfiniteSquare3D,
     description: '',
   },
   {
     name: 'NeonLines',
-    componentId: '.neon-lines-background',
-    component: NeonLines,
+    svelteComponent: NeonLines,
     description: '',
   },
   {
     name: 'SpeedMotion',
-    componentId: '.speed-motion-background',
-    component: SpeedMotion,
+    svelteComponent: SpeedMotion,
     description: '',
   },
   {
     name: 'TopLightLines',
-    componentId: '.top-light-lines-background',
-    component: TopLightLines,
+    svelteComponent: TopLightLines,
     description: '',
   },
   {
     name: 'TubelightGlow',
-    componentId: '.tubelight-glow-background',
-    component: TubelightGlow,
+    svelteComponent: TubelightGlow,
     description: '',
   },
   {
     name: 'TerrainPaths',
-    componentId: '.terrain-paths-background',
-    component: TerrainPaths,
+    svelteComponent: TerrainPaths,
     description: '',
   },
   {
     name: 'Magic Stars',
-    componentId: '.magic-stars-background',
-    component: MagicStars,
+    svelteComponent: MagicStars,
     description: '',
   },
   {
     name: 'Matrix Effect',
-    componentId: '.matrix-effect-background',
-    component: MatrixEffect,
+    svelteComponent: MatrixEffect,
     description: '',
   },
   {
     name: 'Sun Light',
-    componentId: 'sun-light',
-    component: SunLight,
+    svelteComponent: SunLight,
+    description: '',
+  },
+  {
+    name: 'Glass Effect',
+    svelteComponent: GlassEffect,
     description: '',
   },
 ]

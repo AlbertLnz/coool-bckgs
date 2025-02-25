@@ -6,6 +6,26 @@ import ReactIcon from '@/assets/ReactIcon'
 import VueIcon from '@/assets/VueIcon'
 import Toast from '@/components/Toast'
 
+const bckgRawFiles = import.meta.glob('/src/bckgs/*.{svelte,tsx,vue}', {
+  query: '?raw',
+  import: 'default',
+})
+
+async function getRawComponent(
+  name: string,
+  technology: 'svelte' | 'react' | 'vue'
+) {
+  const extension = technology === 'react' ? 'tsx' : technology
+  const filePath = `/src/bckgs/${name}.${extension}`
+  const loadFile = bckgRawFiles[filePath]
+
+  if (!loadFile) {
+    throw new Error(`Component "${name}.${extension}" not found in /src/bckgs/`)
+  }
+
+  return loadFile()
+}
+
 const BtnChangeBckg = () => {
   const [bckgStyle, setBckgStyle] = useState<null | string>(null)
   const [showToast, setShowToast] = useState({
@@ -13,17 +33,28 @@ const BtnChangeBckg = () => {
     message: '',
   })
 
-  const handleCopyComponent = (
+  async function getRawComponent(
+    name: string,
+    technology: 'svelte' | 'react' | 'vue'
+  ) {
+    const filePath = `/src/bckgs/${name}.${technology}`
+    if (bckgRawFiles[filePath]) {
+      return await bckgRawFiles[filePath]()
+    }
+    throw new Error(`Component ${name} not found`)
+  }
+
+  const handleCopyComponent = async (
     evt: any,
-    componentId: string,
+    componentName: string,
+    technology: 'svelte' | 'react' | 'vue',
     message: string
   ) => {
     evt.stopPropagation()
-    const component = document.querySelector(componentId)
-    console.log(componentId, component)
+    const component = await getRawComponent(componentName, technology)
+    console.log(componentName, component)
 
     setShowToast({ show: true, message })
-
     setTimeout(() => {
       setShowToast({ show: false, message })
     }, 1500)
@@ -56,7 +87,8 @@ const BtnChangeBckg = () => {
                   onClick={(evt) =>
                     handleCopyComponent(
                       evt,
-                      style.componentId,
+                      style.name,
+                      'svelte',
                       'Copied Svelte component!'
                     )
                   }
@@ -67,7 +99,12 @@ const BtnChangeBckg = () => {
                   id='react'
                   className='group/{react} bg-[#00D8FF]/40 flex items-center justify-center'
                   onClick={(evt) =>
-                    handleCopyComponent(evt, 'react', 'Copied React component!')
+                    handleCopyComponent(
+                      evt,
+                      style.name,
+                      'react',
+                      'Copied React component!'
+                    )
                   }
                 >
                   <ReactIcon className='size-10 group-hover/{react}:scale-150 transition-all duration-150 ease-in' />
@@ -76,7 +113,12 @@ const BtnChangeBckg = () => {
                   id='vue'
                   className='group/{vue} bg-[#41B883]/40 rounded-br-xl flex items-center justify-center'
                   onClick={(evt) =>
-                    handleCopyComponent(evt, 'vue', 'Copied Vue component!')
+                    handleCopyComponent(
+                      evt,
+                      style.name,
+                      'vue',
+                      'Copied Vue component!'
+                    )
                   }
                 >
                   <VueIcon className='size-10 group-hover/{vue}:scale-150 transition-all duration-150 ease-in' />
@@ -90,7 +132,8 @@ const BtnChangeBckg = () => {
       {bckgStyle && (
         <SvelteWrapper
           component={
-            bckgStylesMap.find((style) => style.name === bckgStyle)?.component
+            bckgStylesMap.find((style) => style.name === bckgStyle)
+              ?.svelteComponent
           }
         />
       )}

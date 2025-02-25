@@ -15,7 +15,8 @@
   }
 </script>
 
-<div class="flex flex-col items-center justify-center py-6 bg-white/30 w-1/4 mx-auto rounded-xl">
+<div class="flex items-center justify-center mx-auto rounded-full gap-x-2 tracking-wide">
+  <h3 class="text-white/90">Hidden cards</h3>
   <button
     type="button"
     aria-label="Toggle hide bckgs section"
@@ -24,7 +25,6 @@
     status ? 'bg-[#12CB66]' : 'bg-[#BEBEBE]'
     }`}
     >
-    <div class={`size-[20px] rounded-full transition-all bg-white ${status ? 'translate-x-8' : ''}`}></div>
-  </button>
-  <p class="mt-2 text-xl text-white/90 tracking-wide italic">Hide backgrounds</p>
+      <div class={`size-[20px] rounded-full transition-all bg-white ${status ? 'translate-x-8' : ''}`}></div>
+    </button>
 </div>

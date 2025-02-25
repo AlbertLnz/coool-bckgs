@@ -16,84 +16,100 @@ import type { SvelteComponent } from 'svelte'
 import GlassEffect from '@/bckgs/GlassEffect.svelte'
 
 type BckgStyle = {
-  name: string
+  title: string
+  componentName: string
   svelteComponent: typeof SvelteComponent<any, any, any>
   description: string
 }
 
 const bckgStylesMap: BckgStyle[] = [
   {
-    name: 'SolidColor',
+    title: 'Solid Color',
+    componentName: 'SolidColor',
     svelteComponent: SolidColor,
     description: '',
   },
   {
-    name: 'Grid',
+    title: 'Grid',
+    componentName: 'Grid',
     svelteComponent: Grid,
     description: '',
   },
   {
-    name: 'Snowflakes',
+    title: 'Snowflakes',
+    componentName: 'Snowflakes',
     svelteComponent: Snowflakes,
     description: '',
   },
   {
-    name: 'Rain',
+    title: 'Rain',
+    componentName: 'Rain',
     svelteComponent: Rain,
     description: "It's raining man!",
   },
   {
-    name: 'CirclesLines',
+    title: 'Circles Lines',
+    componentName: 'CirclesLines',
     svelteComponent: CirclesLines,
     description: '',
   },
   {
-    name: 'InfiniteSquare3d',
+    title: 'Infinite Square 3d',
+    componentName: 'InfiniteSquare3d',
     svelteComponent: InfiniteSquare3D,
     description: '',
   },
   {
-    name: 'NeonLines',
+    title: 'Neon Lines',
+    componentName: 'NeonLines',
     svelteComponent: NeonLines,
     description: '',
   },
   {
-    name: 'SpeedMotion',
+    title: 'Speed Motion',
+    componentName: 'SpeedMotion',
     svelteComponent: SpeedMotion,
     description: '',
   },
   {
-    name: 'TopLightLines',
+    title: 'TopLightLines',
+    componentName: 'Top Light Lines',
     svelteComponent: TopLightLines,
     description: '',
   },
   {
-    name: 'TubelightGlow',
+    title: 'Tubelight Glow',
+    componentName: 'TubelightGlow',
     svelteComponent: TubelightGlow,
     description: '',
   },
   {
-    name: 'TerrainPaths',
+    title: 'TerrainPaths',
+    componentName: 'Terrain Paths',
     svelteComponent: TerrainPaths,
     description: '',
   },
   {
-    name: 'Magic Stars',
+    title: 'Magic Stars',
+    componentName: 'MagicStars',
     svelteComponent: MagicStars,
     description: '',
   },
   {
-    name: 'Matrix Effect',
+    title: 'Matrix Effect',
+    componentName: 'MatrixEffect',
     svelteComponent: MatrixEffect,
     description: '',
   },
   {
-    name: 'Sun Light',
+    title: 'Sun Light',
+    componentName: 'SunLight',
     svelteComponent: SunLight,
     description: '',
   },
   {
-    name: 'Glass Effect',
+    title: 'Glass Effect',
+    componentName: 'GlassEffect',
     svelteComponent: GlassEffect,
     description: '',
   },

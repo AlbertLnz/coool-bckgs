@@ -19,20 +19,20 @@ const BtnChangeBckg = () => {
   })
 
   async function getRawComponent(
-    name: string,
-    technology: 'svelte' | 'react' | 'vue'
+    componentName: string,
+    technology: 'svelte' | 'tsx' | 'vue'
   ) {
-    const filePath = `/src/bckgs/${name}.${technology}`
+    const filePath = `/src/bckgs/${componentName}.${technology}`
     if (bckgRawFiles[filePath]) {
       return await bckgRawFiles[filePath]()
     }
-    throw new Error(`Component ${name} not found`)
+    throw new Error(`Component ${componentName} not found`)
   }
 
   const handleCopyComponent = async (
     evt: any,
     componentName: string,
-    technology: 'svelte' | 'react' | 'vue',
+    technology: 'svelte' | 'tsx' | 'vue',
     message: string
   ) => {
     evt.stopPropagation()
@@ -56,11 +56,11 @@ const BtnChangeBckg = () => {
           return (
             <article
               className='group relative flex flex-col items-center justify-start bg-zinc-950 shadow-card-shadow p-8 aspect-video rounded-xl hover:cursor-pointer overflow-hidden'
-              onClick={() => setBckgStyle(style.name)}
+              onClick={() => setBckgStyle(style.componentName)}
             >
               <div class='absolute top-0 size-full bg-gradient-to-b from-[#242424] via-[#ffffff05] to-transparent'></div>
               <h3 className='text-3xl tracking-wide line-clamp-1 group-hover:scale-150 transition-all duration-300 ease-in-out'>
-                {style.name}
+                {style.title}
               </h3>
               <p className='absolute bottom-0 flex self-center justify-center mb-4 text-white/60 group-hover:hidden transition-all ease-in duration-500'>
                 {style.description}
@@ -72,7 +72,7 @@ const BtnChangeBckg = () => {
                   onClick={(evt) =>
                     handleCopyComponent(
                       evt,
-                      style.name,
+                      style.componentName,
                       'svelte',
                       'Copied Svelte component!'
                     )
@@ -86,8 +86,8 @@ const BtnChangeBckg = () => {
                   onClick={(evt) =>
                     handleCopyComponent(
                       evt,
-                      style.name,
-                      'react',
+                      style.componentName,
+                      'tsx',
                       'Copied React component!'
                     )
                   }
@@ -100,7 +100,7 @@ const BtnChangeBckg = () => {
                   onClick={(evt) =>
                     handleCopyComponent(
                       evt,
-                      style.name,
+                      style.componentName,
                       'vue',
                       'Copied Vue component!'
                     )
@@ -119,7 +119,7 @@ const BtnChangeBckg = () => {
       ) : (
         <SvelteWrapper
           component={
-            bckgStylesMap.find((style) => style.name === bckgStyle)
+            bckgStylesMap.find((style) => style.componentName === bckgStyle)
               ?.svelteComponent
           }
         />
